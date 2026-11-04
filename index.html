@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Эшон — халяль стритфуд в Нальчике</title>
+  <meta name="description" content="Точка быстрого питания «Эшон» — 100% халяль, фирменные соусы, мясо собственного маринования. Шаурма, бургеры, кесадилья, кофе с собой. Нальчик, ул. Кешокова, 41А. Ежедневно 10:00–01:00.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #fffaf5;
+      color: #2e2e2e;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 16px;
+      object-fit: cover;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .header {
+      background-color: #1e1e1e;
+      color: #fff;
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #f7b731;
+      line-height: 1;
+    }
+
+    .logo small {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: #ccc;
+      display: block;
+      letter-spacing: 0.5px;
+    }
+
+    .header-contact {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    .header-contact a {
+      background-color: #f7b731;
+      color: #1e1e1e;
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    .header-contact a:hover {
+      background-color: #ffca4b;
+      transform: scale(1.02);
+    }
+
+    .header-phone {
+      font-size: 0.95rem;
+      color: #f0f0f0;
+      font-weight: 600;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #f7b731;
+      color: #1e1e1e;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      transition: 0.2s;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: #ffca4b;
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 40px 0 30px;
+      background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+      color: #fff;
+      border-radius: 0 0 40px 40px;
+      margin-bottom: 20px;
+    }
+
+    .hero .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1.2;
+      max-width: 800px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span { color: #f7b731; }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 650px;
+      margin-bottom: 28px;
+      color: #ddd;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .badge {
+      background: rgba(247, 183, 49, 0.15);
+      border: 1px solid #f7b731;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #f7b731;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      text-align: center;
+      margin: 50px 0 30px;
+      color: #1e1e1e;
+    }
+
+    .section-title span {
+      border-bottom: 4px solid #f7b731;
+      padding-bottom: 8px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .filter-btn {
+      background: #fff;
+      border: 1.5px solid #e0e0e0;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 0.95rem;
+      color: #2e2e2e;
+    }
+
+    .filter-btn.active {
+      background: #1e1e1e;
+      color: #fff;
+      border-color: #1e1e1e;
+    }
+
+    .filter-btn:hover { border-color: #f7b731; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+      margin-bottom: 30px;
+    }
+
+    .menu-card {
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: 0.2s;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #f0e9e0;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+    }
+
+    .card-img-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-card img,
+    .menu-card .card-img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 0;
+      background: #f5efe6;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-card:hover .card-img { transform: scale(1.03); }
+
+    /* ✨ Бейдж «Хит продаж» */
+    .hit-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: linear-gradient(135deg, #ff3b30, #ff6b35);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 40px;
+      z-index: 2;
+      box-shadow: 0 4px 12px rgba(255,59,48,0.4);
+      letter-spacing: 0.3px;
+      animation: pulseHit 2s infinite;
+    }
+
+    @keyframes pulseHit {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .card-content {
+      padding: 18px 18px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      background: #f9f1e6;
+      color: #b06b1a;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 40px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+
+    .price {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #1e1e1e;
+      margin-bottom: 12px;
+    }
+
+    .card-btn {
+      background: #f7b731;
+      color: #1e1e1e;
+      border: none;
+      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 40px;
+      font-size: 1rem;
+      width: 100%;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: auto;
+    }
+
+    .card-btn:hover { background: #ffca4b; }
+
+    .reviews {
+      background: #1e1e1e;
+      color: #fff;
+      padding: 50px 0;
+      border-radius: 40px 40px 0 0;
+      margin-top: 30px;
+    }
+
+    .reviews .section-title { color: #fff; margin-top: 0; }
+    .reviews .section-title span { border-bottom-color: #f7b731; }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .review-card {
+      background: #2d2d2d;
+      padding: 24px;
+      border-radius: 20px;
+      border-left: 5px solid #f7b731;
+    }
+
+    .review-card p {
+      font-size: 0.98rem;
+      color: #ddd;
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+
+    .review-author {
+      font-weight: 700;
+      color: #f7b731;
+      font-size: 0.95rem;
+    }
+
+    .contacts { padding: 50px 0 30px; }
+
+    .contacts-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .contacts-info {
+      flex: 1 1 300px;
+      background: #fff;
+      padding: 28px;
+      border-radius: 24px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    .contacts-info h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #1e1e1e;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      font-size: 1rem;
+    }
+
+    /* ✨ Иконки контактов */
+    .contact-icon {
+      font-size: 1.4rem;
+      min-width: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .contact-icon svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .contacts-map {
+      flex: 2 1 400px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      min-height: 300px;
+      background: #e9e1d7;
+      position: relative;
+    }
+
+    .contacts-map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      border: 0;
+    }
+
+    .footer {
+      background: #0f0f0f;
+      color: #aaa;
+      padding: 32px 0;
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 20px;
+    }
+
+    .footer .logo-small {
+      font-weight: 700;
+      color: #f7b731;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .footer a { color: #f7b731; font-weight: 600; }
+    .footer a:hover { text-decoration: underline; }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #25d366;
+      color: #fff;
+      padding: 14px 18px;
+      border-radius: 60px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
+      z-index: 999;
+      font-size: 1rem;
+      transition: 0.2s;
+      border: none;
+    }
+
+    .whatsapp-float:hover {
+      background: #1ebe5a;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+      .header-inner {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+      .header-contact { justify-content: center; flex-wrap: wrap; }
+      .header-phone { display: none; }
+      .section-title { font-size: 1.6rem; margin-top: 40px; }
+      .menu-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .menu-card img, .menu-card .card-img { height: 140px; }
+      .card-title { font-size: 1rem; }
+      .price { font-size: 1.2rem; }
+      .filters { gap: 8px; }
+      .filter-btn { padding: 8px 16px; font-size: 0.8rem; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .contacts-wrapper { flex-direction: column; }
+      .whatsapp-float {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+        bottom: 16px;
+        right: 16px;
+      }
+      .hit-badge { font-size: 0.65rem; padding: 5px 10px; top: 8px; left: 8px; }
+    }
+
+    @media (max-width: 480px) {
+      .menu-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.8rem; }
+      .logo { font-size: 1.6rem; }
+      .btn { padding: 12px 24px; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">
+        ЭШОН
+        <small>100% ХАЛЯЛЬ · СТРИТФУД</small>
+      </div>
+      <div class="header-contact">
+        <span class="header-phone">+7 (938) 078-99-20</span>
+        <a href="https://wa.me/79380789920" target="_blank">Заказать в WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Вкусный стритфуд <span>по-халяль</span> в Нальчике</h1>
+      <p>Фирменные соусы, мясо собственного маринования, стабильное качество. Готовим быстро — от 10 минут.</p>
+      <a href="#menu" class="btn">Смотреть меню</a>
+      <div class="hero-badges">
+        <span class="badge">✅ 100% Халяль</span>
+        <span class="badge">🔥 Собственное маринование</span>
+        <span class="badge">🚀 Быстрая доставка</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="container" id="menu">
+    <h2 class="section-title"><span>Меню</span></h2>
+
+    <div class="filters" id="filters">
+      <button class="filter-btn active" data-filter="all">Все блюда</button>
+      <button class="filter-btn" data-filter="шаурма">Шаурма</button>
+      <button class="filter-btn" data-filter="восток">Гиро и донар</button>
+      <button class="filter-btn" data-filter="мексика">Мексика</button>
+      <button class="filter-btn" data-filter="бургеры">Бургеры и хот-доги</button>
+      <button class="filter-btn" data-filter="закуски">Фритюр и закуски</button>
+      <button class="filter-btn" data-filter="напитки">Напитки</button>
+    </div>
+
+    <div class="menu-grid" id="menuGrid"></div>
+  </section>
+
+  <section class="reviews">
+    <div class="container">
+      <h2 class="section-title"><span>Отзывы наших гостей</span></h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <p>«Постоянно заказываю шаурму с говядиной — мясо всегда сочное, соус фирменный, пальчики оближешь. Живу рядом, беру несколько раз в неделю!»</p>
+          <div class="review-author">— Юлия Дмитриева</div>
+        </div>
+        <div class="review-card">
+          <p>«Очень вкусная шаурма и отличное обслуживание. Персонал вежливый, готовят быстро. Рекомендую всем!»</p>
+          <div class="review-author">— Егор Королев</div>
+        </div>
+        <div class="review-card">
+          <p>«Любимые бургеры и картофель фри! Всегда свежее фритюрное масло, котлеты прожарены идеально. Спасибо «Эшон»!»</p>
+          <div class="review-author">— Гость карт</div>
+        </div>
+        <div class="review-card">
+          <p>«Стабильное качество блюд, свежесть фритюра и отличный вкус мяса. Заказываем всей семьёй, всё халяль — это важно».</p>
+          <div class="review-author">— Постоянный клиент</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contacts container">
+    <h2 class="section-title"><span>Контакты</span></h2>
+    <div class="contacts-wrapper">
+      <div class="contacts-info">
+        <h3>Точка быстрого питания «Эшон»</h3>
+        <div class="contact-item">
+          <span class="contact-icon">📍</span>
+          <span>г. Нальчик, ул. Кешокова, 41А<br><small style="color:#888;">(угловое здание, ориентир — магазин Xiaomi)</small></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">⏰</span>
+          <span>Ежедневно с 10:00 до 01:00</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📞</span>
+          <span><a href="tel:+79380789920" style="color:#1e1e1e; font-weight:600;">+7 (938) 078-99-20</a> (WhatsApp / предзаказ)</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f7b731" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </span>
+          <span><a href="https://instagram.com/eshon_6666" target="_blank" style="color:#1e1e1e; font-weight:600;">@eshon_6666</a></span>
+        </div>
+        <div style="margin-top: 22px; background: #f9f1e6; padding: 14px; border-radius: 16px; font-weight: 600; color: #b06b1a;">
+          ⭐ Средний чек — 450 руб.
+        </div>
+        <a href="https://wa.me/79380789920" class="btn" style="margin-top: 22px; width:100%; display:block; text-align:center;">Сделать заказ</a>
+      </div>
+      <div class="contacts-map">
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A1e6c9a7c8e5b4a3f2d1c0b9a8f7e6d5c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0f9e&amp;source=constructor" width="100%" height="100%" frameborder="0" allowfullscreen="true"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="logo-small">ЭШОН · 100% ХАЛЯЛЬ</div>
+      <p>Нальчик, ул. Кешокова, 41А · Ежедневно 10:00–01:00</p>
+      <p style="margin-top: 12px;">
+        <a href="https://wa.me/79380789920" target="_blank">WhatsApp</a> · 
+        <a href="https://instagram.com/eshon_6666" target="_blank">Instagram</a>
+      </p>
+      <p style="margin-top: 18px; font-size: 0.8rem; color: #666;">© 2025 Точка быстрого питания «Эшон». Все права защищены.</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/79380789920" class="whatsapp-float" target="_blank">
+    <span>💬</span> Заказать
+  </a>
+
+  <script>
+    // ========== ДАННЫЕ МЕНЮ (компактные карточки) ==========
+    const menuItems = [
+      // ========== ШАУРМА ==========
+      {
+        id: 1,
+        category: 'шаурма',
+        title: 'Шаурма',
+        desc: 'Классическая шаурма в лаваше с фирменным соусом. Выберите мясо и размер.',
+        price: 200,
+        tags: ['Куриная 250 руб.', 'Сырная 270 руб.', 'С картошкой 270 руб.', 'Мини 200 руб.', 'Супер 330 руб.', 'Говяжья 350/390 руб.'],
+        img: 'images/classic-shawarma.jpg',
+        hit: true
+      },
+
+      // ========== ВОСТОЧНЫЙ СТРИТФУД ==========
+      {
+        id: 2,
+        category: 'восток',
+        title: 'Гиро и донар',
+        desc: 'Восточный стритфуд в лаваше, пите или булке. С курицей, сыром или рыбой.',
+        price: 250,
+        tags: ['Гиро в булке 250/300 руб.', 'Гиро на тарелке 450 руб.', 'Донар куриный 250 руб.', 'Донар сырный 270 руб.', 'Донар с рыбой 290 руб.'],
+        img: 'images/giro-fri.jpg',
+        hit: false
+      },
+      {
+        id: 3,
+        category: 'восток',
+        title: 'Люля-кебаб',
+        desc: 'Говяжий люля-кебаб в лаваше или булке с овощами и соусом.',
+        price: 350,
+        tags: ['В лаваше 350 руб.', 'В булке 350 руб.'],
+        img: 'images/lulya-kebab.jpg',
+        hit: false
+      },
+
+      // ========== МЕКСИКАНСКАЯ КУХНЯ ==========
+      {
+        id: 4,
+        category: 'мексика',
+        title: 'Такос',
+        desc: 'Мексиканские такос с начинкой на выбор.',
+        price: 350,
+        tags: ['Куриный 350/390 руб.', 'Говяжий 390 руб.', 'С рыбой 350 руб.'],
+        img: 'https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=600&auto=format&fit=crop&q=80',
+        hit: false
+      },
+      {
+        id: 5,
+        category: 'мексика',
+        title: 'Кесадилья',
+        desc: 'Пшеничная лепёшка с расплавленным сыром и начинкой.',
+        price: 300,
+        tags: ['Мексиканская 300 руб.', 'С рыбой 300 руб.'],
+        img: 'images/quesadilla-beef.jpg',
+        hit: false
+      },
+
+      // ========== БУРГЕРЫ И ХОТ-ДОГИ ==========
+      {
+        id: 6,
+        category: 'бургеры',
+        title: 'Бургеры',
+        desc: 'Бургеры на любой вкус: курица, говядина, рыба, двойные и с сыром.',
+        price: 220,
+        tags: ['Куриный 220 руб.', 'Двойной куриный 270 руб.', 'Чизбургер 240 руб.', 'Говяжий 300 руб.', 'С рыбой 250 руб.'],
+        img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=80',
+        hit: true
+      },
+      {
+        id: 7,
+        category: 'бургеры',
+        title: 'Хот-дог датский',
+        desc: 'Классический датский хот-дог с сосиской и соусом.',
+        price: 170,
+        tags: ['Датский 170 руб.'],
+        img: 'images/hot-dog.jpg',
+        hit: true
+      },
+
+      // ========== ФРИТЮР И ЗАКУСКИ ==========
+      {
+        id: 8,
+        category: 'закуски',
+        title: 'Картофель',
+        desc: 'Хрустящий картофель: фри или по-деревенски.',
+        price: 170,
+        tags: ['Фри 170 руб.', 'По-деревенски 200 руб.'],
+        img: 'https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=600&auto=format&fit=crop&q=80',
+        hit: true
+      },
+      {
+        id: 9,
+        category: 'закуски',
+        title: 'Куриные закуски',
+        desc: 'Нагетсы, ножки, крылышки и стрипсы в хрустящей панировке.',
+        price: 170,
+        tags: ['Нагетсы 6шт 170 / 9шт 250 руб.', 'Ножки 3/5/9: 220/330/540 руб.', 'Крылышки 4/8: 200/360 руб.', 'Стрипсы 4шт 300 руб.'],
+        img: 'https://images.unsplash.com/photo-1562967914-608f82629710?w=600&auto=format&fit=crop&q=80',
+        hit: false
+      },
+      {
+        id: 10,
+        category: 'закуски',
+        title: 'Сырные палочки',
+        desc: 'Хрустящие палочки из тянущегося сыра в панировке.',
+        price: 220,
+        tags: ['5 шт — 220 руб.'],
+        img: 'https://images.unsplash.com/photo-1531749668029-2db88e4276c7?w=600&auto=format&fit=crop&q=80',
+        hit: false
+      },
+
+      // ========== НАПИТКИ ==========
+      {
+        id: 11,
+        category: 'напитки',
+        title: 'Напитки',
+        desc: 'Кофе с собой, чай и газированные напитки.',
+        price: 100,
+        tags: ['Кофе 150 руб.', 'Чай 120 руб.', 'Газировка 100 руб.'],
+        img: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=600&auto=format&fit=crop&q=80',
+        hit: false
+      }
+    ];
+
+    const menuGrid = document.getElementById('menuGrid');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    function renderMenu(items) {
+      menuGrid.innerHTML = '';
+      if (items.length === 0) {
+        menuGrid.innerHTML = '<p style="grid-column:1/-1; text-align:center; padding:40px;">В этой категории пока нет блюд 😔</p>';
+        return;
+      }
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'menu-card';
+        card.innerHTML = `
+          <div class="card-img-wrap">
+            ${item.hit ? '<span class="hit-badge">🔥 Хит продаж</span>' : ''}
+            <img class="card-img" src="${item.img}" alt="${item.title}" loading="lazy"
+                 onerror="this.src='https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=600&auto=format&fit=crop&q=80';">
+          </div>
+          <div class="card-content">
+            <div class="card-title">${item.title}</div>
+            <div class="card-desc">${item.desc}</div>
+            <div class="card-meta">
+              ${item.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+            <div class="price">${item.price} руб.</div>
+            <button class="card-btn" onclick="orderViaWhatsApp('${item.title}')">Заказать</button>
+          </div>
+        `;
+        menuGrid.appendChild(card);
+      });
+    }
+
+    function filterMenu(category) {
+      if (category === 'all') {
+        renderMenu(menuItems);
+      } else {
+        const filtered = menuItems.filter(item => item.category === category);
+        renderMenu(filtered);
+      }
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterMenu(btn.getAttribute('data-filter'));
+      });
+    });
+
+    function orderViaWhatsApp(dishName) {
+      const phone = '79380789920';
+      const text = `Здравствуйте! Хочу заказать: ${dishName}. Подскажите, пожалуйста, детали заказа.`;
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    renderMenu(menuItems);
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
